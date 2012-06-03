@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
 \usepackage[english]{babel}   
 \usepackage[latin1]{inputenc}
@@ -123,8 +123,8 @@ Junethack is
 \end{frame}
 
 % technology slide
-\frametitle{Junethack implementation (aka buzz word throwing)}
 \begin{frame}
+\frametitle{Junethack implementation (aka buzz word bingo)}
   Junethack is\pause
   \begin{itemize}[<+->]
     \item implemented in Ruby
@@ -143,7 +143,7 @@ Junethack is
     \item having a downloadable xlogfile log (standard patch)
     \begin{itemize}[<+->]
       \item so there is a standard way of reading machine-translatable data about played games and achievements
-      \item the Junethack server is polling every 15 minute for changed xlogfiles, new games are added to the db regardless if the player is registered or not
+      \item the Junethack server is polling every 15 minute for changed xlogfiles, new games are added to the database regardless if the player is registered or not
     \end{itemize}
     \item letting the player write a custom line of text that can be downloaded somehow (usually this is written as comment into the option file)
     \begin{itemize}[<+->]
@@ -163,7 +163,7 @@ Junethack is
     \item May 2011: actual code gets written
     \item June 2011: lots of code gets written. At that time, I get involved.
     \item June 2011: discussions about the name flare up -> decision: as long as it starts at least in \textbf{Ju}ly, it's fine
-    \item 17th July 2011: start of the tournament (not all trophies implemented, but for preventing overlap with Crawl tournament and vicinity to devnull)
+    \item 17th July 2011: start of the tournament (not all ready, not all trophies implemented, but for preventing overlap with Crawl tournament and vicinity to devnull)
     \item 13th August 2011: last clan trophy implemented (1 day before tournament ends)
     \item 14th August 2011: tournament ends
     \item 1st July 2012: second Junethack tournament starts
@@ -184,7 +184,7 @@ Junethack is
       \item because of startscummer and thread issues
       \begin{itemize}[<+->]
         \item parsing start scummed games took longer than 15 minutes, concurrent running parsing processes
-        \item lots of caching depends on date of last game played by a registered user, start scumming games
+        \item lots of caching depends on date of last game played by a registered user
         \item opening a start scummer user page would hog the CPU (all played games are shown)
       \end{itemize}
     \end{itemize}
@@ -193,22 +193,20 @@ Junethack is
 \end{frame}
 
 % start scummer badness 
+\begin{frame}
+\frametitle{Junethack 2011 - a start scummer's Eldorado}
+  So, how bad was start scumming in Junethack 2011?\pause\\
+  Very, very bad.\pause\\
+  A game is considered to be start scummed if its turn count < 10 and the death reason is 'escaped' or 'quit' (the same definition as NAO uses).\pause\\
+  There were \textbf{125,252} of such games and only 18,079 regular games.\pause\\
+  I only tested the database with 50,000 games (more than 2 months of normal NAO activity). :-)\pause\\
+  Two players accounted for most of those games.\pause\\
+  One for 76,546 and the other for 22,703 games.\pause\\
+  Perfomance issues were resolved by not writing start scummed games into the main games table.
+\end{frame}
 
 % statistics
 
-%\section{Junethack 2012}
-\begin{frame}
-\frametitle{Junethack 2012}
-  Not much was changed for this year, small bugfixing and polishing the website:\pause
-  \begin{itemize}[<+->]
-    \item most of the streak trophies have been removed
-    \item new forks: GruntHack and NetHack4
-    \item new clan trophy: most trophy combinations
-    \item the tournament is in June (and will be in the future)
-    \item no bonus game (removed NetHack 1.3a)
-    \item The tournament web site look has been slightly updated and bugs have been fixed
-  \end{itemize}
-\end{frame}
 
 % lesson learnt
 % no thoughtful preparation will help you against NetHack players
@@ -216,10 +214,9 @@ Junethack is
 % recalculate we had to reimport all the games several times because of bugs issues with parsing/code changes/etc. -> not disruptive to the player
 % people are really forgiving if you aren't disrupting their games
 
-%\section{Junethack 2012}
 \begin{frame}
 \frametitle{Junethack 2012}
-  The 
+  Not much was changed for this year, small bugfixing and polishing the website:\pause
   \begin{itemize}[<+->]
     \item most of the streak trophies have been removed
     \item new forks: GruntHack and NetHack4
