@@ -4,7 +4,11 @@
 \usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
 
+% http://www.hartwork.org/beamer-theme-matrix/
 \usepackage{beamerthemesplit}
+%\useoutertheme{shadow}
+
+
 \usepackage{colortbl}
 
 \usepackage{wasysym}
@@ -13,16 +17,10 @@
 
 \newcommand{\q}[1]{\enquote{#1}}%
 
-\newcommand{\nethackpt}{\href{http://sourceforge.net/projects/nethack-pt/}{nethack-pt}}%
-\newcommand{\nethackcn}{\href{http://code.google.com/p/nethack-cn/}{nethack-cn}}%
-\newcommand{\nethackfr}{\href{http://sourceforge.net/projects/nethack-fr/}{nethack-fr}}%
-\newcommand{\nethackit}{\href{http://github.com/hamen/nethack-it}{nethack-it}}%
-\newcommand{\NetzHack}{\href{http://netzhack.de/}{NetzHack}}%
-
 \title{Junethack - NetHack Cross-Variant Summer Tournament}
 \author{Patric Mueller}
 %\date{\today}
-\date{2 Jun 2011}
+\date{3 Jun 2011}
 
 \begin{document}
 
@@ -30,10 +28,10 @@
 \titlepage
 \end{frame}
 
-\section[outline]{}
-\frame{\tableofcontents}
+%\section[outline]{}
+%\frame{\tableofcontents}
 
-\section{introduction}
+%\section{introduction}
 \begin{frame}
 \frametitle{Who's that guy?}
 My name's Patric Mueller \href{mailto:bhaak@gmx.net}{<bhaak@gmx.net>} \pause
@@ -49,10 +47,15 @@ I'm the developer of \pause
 
 \begin{frame}
 \frametitle{Junethack}
-Junethack is an online tournament for NetHack and several of its forks, using existing public servers.
+Junethack is
+  \begin{itemize}
+    \item an online tournament
+    \item for NetHack and several of its forks
+    \item using existing public servers
+  \end{itemize}
 \end{frame}
 
-\section{NetHack tournaments}
+%\section{NetHack tournaments}
 \begin{frame}
 \frametitle{pre-Junethack situation}
   Existing NetHack tournaments before Junethack:\pause
@@ -65,10 +68,14 @@ Junethack is an online tournament for NetHack and several of its forks, using ex
 \begin{frame}
 \frametitle{June tournament on NAO}
   The "June tournament" was only hold twice AFAIK:\pause
-  \begin{itemize}
-    \item 2006: 18,748 games, 188 ascensions
-    \item 2007: 14,524 games, 349 ascensions
-  \end{itemize}
+  \begin{itemize}[<+->]
+    \item June 2006: 18,748 games, 188 ascensions
+    \item June 2007: 14,524 games, 349 ascensions
+  \end{itemize}\pause
+  \vfill
+  BTW, \href{http://alt.org/nethack/perday.html}{NAO statistics} are somewhat constant:\\
+  ~April 2011 \textasciitilde 18,000 games, 171 ascensions
+  \vfill
 \end{frame}
 
 \begin{frame}
@@ -76,33 +83,76 @@ Junethack is an online tournament for NetHack and several of its forks, using ex
   devnull has been holding an annual NetHack Tournament, beginning at midnight on Halloween, since 1999.\pause
   \begin{itemize}[<+->]
     \item 2008: 22,812 games by 1305 players (only 58 players ascended!)
+  \end{itemize}\pause
+  \vfill
+  devnull has been a key influence on the design of Junethack.
+  \vfill
+\end{frame}
+
+\begin{frame}
+\frametitle{/dev/null/nethack (continued)}
+  devnull features\pause
+  \begin{itemize}[<+->]
+    \item public servers setup only for the tournament
+    \item only vanilla NetHack (no GUI improvements, no bugfixes)
+    \item lots of trophies
+    \item clan scores
+    \item non-NetHack challenges (triggered e.g. by wishing, digging, etc.)
+    \begin{itemize}[<+->]
+      \item in-game challenges (e.g. Grue, Pac-Man level)
+      \item out-of-game challenges (ZapM and KoL)
+    \end{itemize}
+    \item starting at midnight Halloween Pacific Standard Time (PST)
+  \end{itemize}\pause
+\end{frame}
+
+% TODO junethack design
+
+% technical slide
+\begin{frame}
+\frametitle{Junethack technology}
+  Junethack is implemented\pause
+  \begin{itemize}[<+->]
+    \item implemented in Ruby
+    \item using the Sinatra web framework
+    \item using datamapper as ORM
+    \item using Sqlite3 as database backend
+    \item on GitHub under \url{https://github.com/junethack/Junethack}
   \end{itemize}
 \end{frame}
 
-\section{Junethack 2011}
+%\section{Junethack 2011}
 \begin{frame}
-\frametitle{Junethack}
-\begin{center}
+\frametitle{Junethack Timeline}
+  \pause
   \begin{itemize}[<+->]
     \item late 2010, early 2011: ideas for a new NetHack tournament coming up on IRC
     \item early 2011: planning for achievements and trophies, some web mockups
     \item May 2011: actual code gets written
-    \item June 2011: lots of code gets written, I get involved
-    \item July 2011: because of time constraints % TODO ===============================
+    \item June 2011: lots of code gets written. At that time, I get involved.
+    \item June 2011: discussions about the name flare up -> decision: as long as it starts at least in \textbf{Ju}ly, it's fine
+    \item 17th July 2011: start of the tournament (not all trophies implemented, but for preventing overlap with Crawl tournament and vicinity to devnull)
+    \item 13th August 2011: last trophy implemented (1 day before tournament ends)
+    \item 14th August 2011: tournamends ends
+    \item 1st July 2012: second Junethack tournament starts
   \end{itemize}
-\end{center}
 \end{frame}
 
-\section{Junethack 2012}
+% issues during the tournament
+
+
+%\section{Junethack 2012}
 \begin{frame}
 \frametitle{Junethack 2012}
   \begin{itemize}[<+->]
-    \item most of the streak trophies have been removed.
+    \item most of the streak trophies have been removed
     \item new forks: GruntHack and NetHack4
     \item new clan trophy: most trophy combinations
     \item the tournament is in June (and will be in the future)
+    \item no bonus game (removed NetHack 1.3a)
     \item The tournament web site look has been slightly updated and bugs have been fixed
   \end{itemize}
 \end{frame}
+
 
 \end{document}
