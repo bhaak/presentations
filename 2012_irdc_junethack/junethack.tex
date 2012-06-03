@@ -103,21 +103,53 @@ Junethack is
       \item out-of-game challenges (ZapM and KoL)
     \end{itemize}
     \item starting at midnight Halloween Pacific Standard Time (PST)
-  \end{itemize}\pause
+  \end{itemize}
 \end{frame}
 
-% TODO junethack design
-
-% technical slide
 \begin{frame}
-\frametitle{Junethack technology}
-  Junethack is implemented\pause
+\frametitle{Junethack design}
+  With experiences from devnull and some more feature request from IRC, these were the ideas and design goals for Junethack\pause
+  \begin{itemize}[<+->]
+    \item using existing public servers
+    \item no games being played on the tournament server (only hosting Junethack website)
+    \item offering vanilla NetHack \textit{and} forks and a bonus game (NetHack 1.3d from 1987)
+    \item encouraging playing multiple variants
+    \item lots of trophies
+    \item clan scores
+    \item more appealing to newbies or non-ascenders (hopefully)
+    \item people should be able to register at any time and all their games from the tournament period should be counted
+    \item starting at midnight Coordinated Universal Time (UTC) (plus no timezone based trophies)
+  \end{itemize}
+\end{frame}
+
+% technology slide
+\frametitle{Junethack implementation (aka buzz word throwing)}
+\begin{frame}
+  Junethack is\pause
   \begin{itemize}[<+->]
     \item implemented in Ruby
     \item using the Sinatra web framework
     \item using datamapper as ORM
     \item using Sqlite3 as database backend
-    \item on GitHub under \url{https://github.com/junethack/Junethack}
+    \item source code available from GitHub \url{https://github.com/junethack/Junethack}
+  \end{itemize}
+\end{frame}
+
+% technology slide
+\begin{frame}
+\frametitle{Junethack implementation (continued)}
+  For a public server to take part in Junethack,\\it has to fullfill 2 conditions:\pause
+  \begin{itemize}[<+->]
+    \item having a downloadable xlogfile log (standard patch)
+    \begin{itemize}[<+->]
+      \item so there is a standard way of reading machine-translatable data about played games and achievements
+      \item the Junethack server is polling every 15 minute for changed xlogfiles, new games are added to the db regardless if the player is registered or not
+    \end{itemize}
+    \item letting the player write a custom line of text that can be downloaded somehow (usually this is written as comment into the option file)
+    \begin{itemize}[<+->]
+      \item for verifiying that Junethack user A is user B on a given public server
+      \item unfortunately, the user has to do this once for every public server
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -132,18 +164,42 @@ Junethack is
     \item June 2011: lots of code gets written. At that time, I get involved.
     \item June 2011: discussions about the name flare up -> decision: as long as it starts at least in \textbf{Ju}ly, it's fine
     \item 17th July 2011: start of the tournament (not all trophies implemented, but for preventing overlap with Crawl tournament and vicinity to devnull)
-    \item 13th August 2011: last trophy implemented (1 day before tournament ends)
-    \item 14th August 2011: tournamends ends
+    \item 13th August 2011: last clan trophy implemented (1 day before tournament ends)
+    \item 14th August 2011: tournament ends
     \item 1st July 2012: second Junethack tournament starts
   \end{itemize}
 \end{frame}
 
 % issues during the tournament
+%\section{Junethack 2011}
+\begin{frame}
+\frametitle{Events and issues during Junethack 2011}
+  \pause
+  \begin{itemize}[<+->]
+    \item a week into the tournament, we got slashdotted: \url{http://games.slashdot.org/story/11/07/22/2338215/first-nethack-cross-variant-summer-tournament}
+    \item some performance issues
+    \begin{itemize}[<+->]
+      \item because of slashdot
+      \item because of missing caching (missing because we started "early")
+      \item because of startscummer and thread issues
+      \begin{itemize}[<+->]
+        \item parsing start scummed games took longer than 15 minutes, concurrent running parsing processes
+        \item lots of caching depends on date of last game played by a registered user, start scumming games
+        \item opening a start scummer user page would hog the CPU (all played games are shown)
+      \end{itemize}
+    \end{itemize}
+    \item For recalculating trophies and clan score, we had to re-import several times all games because of code-fixes, code changes, etc.
+  \end{itemize}
+\end{frame}
 
+% start scummer badness 
+
+% statistics
 
 %\section{Junethack 2012}
 \begin{frame}
 \frametitle{Junethack 2012}
+  Not much was changed for this year, small bugfixing and polishing the website:\pause
   \begin{itemize}[<+->]
     \item most of the streak trophies have been removed
     \item new forks: GruntHack and NetHack4
@@ -154,5 +210,35 @@ Junethack is
   \end{itemize}
 \end{frame}
 
+% lesson learnt
+% no thoughtful preparation will help you against NetHack players
+%  think about obsessive players in your community "What is the worst X could do?"
+% recalculate we had to reimport all the games several times because of bugs issues with parsing/code changes/etc. -> not disruptive to the player
+% people are really forgiving if you aren't disrupting their games
+
+%\section{Junethack 2012}
+\begin{frame}
+\frametitle{Junethack 2012}
+  The 
+  \begin{itemize}[<+->]
+    \item most of the streak trophies have been removed
+    \item new forks: GruntHack and NetHack4
+    \item new clan trophy: most trophy combinations
+    \item the tournament is in June (and will be in the future)
+    \item no bonus game (removed NetHack 1.3a)
+    \item The tournament web site look has been slightly updated and bugs have been fixed
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Future ideas?}
+  \begin{itemize}[<+->]
+    \item replacing clan "most points" with "least points"?
+    \item adding more trophies? (not easy of xlogfile)
+    \item allowing translated versions of NetHack? (there are Japanese, Spanish and
+German versions)
+    \item ...
+  \end{itemize}
+\end{frame}
 
 \end{document}
